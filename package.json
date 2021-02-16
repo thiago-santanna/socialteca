@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "dev": "nodemon scr/Shared/infra/http/server.js"
+    "dev": "nodemon src/shared/infra/http/server.js"
   },
-  "author": "Thiago Santanna",
+  "author": "Thiago-Santanna",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
+    "pg": "^8.5.1",
+    "pg-hstore": "^2.3.3",
     "sequelize": "^6.5.0"
   },
   "devDependencies": {
