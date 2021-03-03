@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-// import 'dotenv/config';
+import 'dotenv/config';
 
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
@@ -11,8 +11,8 @@ import 'express-async-errors';
 // import rateLimiter from './middlewares/rateLimiter';
 import routes from './routes';
 
-// import '@shared/infra/typeorm';
-// import '@shared/container';
+import '../typeorm';
+import '../../container';
 
 const app = express();
 
