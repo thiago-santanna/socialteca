@@ -5,6 +5,8 @@ import IUsersRepository from '../repositories/IUsersRepository'
 import ICreateUserDTO from '../dto/ICreateUserDTO'
 import User from '../infra/typeorm/entities/User'
 
+import AppError from '../../../shared/errors/AppError'
+
 @injectable()
 class CreateUserService{
     constructor(
@@ -12,9 +14,12 @@ class CreateUserService{
         private userRepository: IUsersRepository
     ){}
 
-    public async execute(
-        { name, email, login, password }:ICreateUserDTO
-    ): Promise<User>{
+    public async execute({ name, email, login, password }:ICreateUserDTO): Promise<User>{
+        const userExists = await this.userRepository.findByEmail(email)
+
+        if(userExists){
+            throw new AppError('E-mail address already exists')
+        }
         
         const user = await this.userRepository.create({
             name, email, login, password
