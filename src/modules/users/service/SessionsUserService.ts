@@ -29,15 +29,17 @@ class SessionsUserService{
         const user = await this.userRepository.findByEmail(email)
 
         if(!user){
+            console.log('erro 1')
             throw new AppError('Incorrect email/password combination.', 401)
         }
 
-        const passwordMatched = this.hashProvider.compareHash(
+        const passwordMatched = await this.hashProvider.compareHash(
             password, 
             user.password
         )
 
         if(!passwordMatched){
+            console.log('erro 2')
             throw new AppError('Incorrect email/password combination.', 401)
         }
 
