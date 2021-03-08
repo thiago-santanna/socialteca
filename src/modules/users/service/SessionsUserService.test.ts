@@ -36,4 +36,30 @@ describe('SessionsUser', () => {
         expect(response).toHaveProperty('token')
         expect(response.user).toEqual(user)
     })
+
+    it('should not be able to authenticate with non existing user', async () => {
+        await expect(
+            sessionsUserService.execute({
+                email: 'thiago10@yahoo.com.br',
+                password: '1020tr'
+            })
+        ).rejects.toBeInstanceOf(AppError)
+    })
+
+    it('should not be able to authenticate with wrong password', async () => {
+        const hashedPassword = await fakeHashProvider.generateHash('123456')
+        const user = await fakeUsersRepository.create({
+            name: 'thiago sama',
+            email: 'thiago@sama.com',
+            phone: '81992713545',
+            password: hashedPassword
+        })   
+        
+        await expect(
+            sessionsUserService.execute({
+                email: 'thiago@sama.com',
+                password: 'wrong_password'
+            })
+        ).rejects.toBeInstanceOf(AppError)
+    })
 })
