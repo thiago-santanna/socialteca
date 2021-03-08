@@ -15,7 +15,7 @@ class User {
     name: string
 
     @Column()
-    login: string
+    phone: string
 
     @Column()
     email: string

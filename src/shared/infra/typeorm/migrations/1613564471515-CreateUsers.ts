@@ -20,7 +20,7 @@ export class CreateUsers1613564471515 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name:"login",
+                        name:"phone",
                         type:"varchar",
                         isNullable: false,
                     },
