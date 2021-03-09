@@ -7,6 +7,18 @@ import ICreateUserDTO from '../../dto/ICreateUserDTO'
 class FakeUsersRepository implements IUsersRepository {
     private users: User[] = []
 
+    public async findById(id: string): Promise<User | undefined> {
+        const user = this.users.find(user => user.id === id)
+        return user
+    }
+
+    public async update(user: User): Promise<User> {
+        const indexUser = this.users.findIndex(usr => usr.id === user.id)
+        this.users[indexUser] = user
+        const updatedUser = this.users[indexUser]
+        return updatedUser
+    }    
+
     public async create(data: ICreateUserDTO): Promise<User> {
         const user = new User();
 

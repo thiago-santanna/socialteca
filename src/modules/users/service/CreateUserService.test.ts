@@ -1,4 +1,3 @@
-import crypto from 'crypto'
 import CreateUserService from './CreateUserService'
 import FakeUsersRepository from '../repositories/fake/FakeUsersRepository'
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider'
@@ -6,11 +5,7 @@ import AppError from '../../../shared/errors/AppError'
 
 let fakeUsersRepository: FakeUsersRepository
 let fakeHashProvider: FakeHashProvider
-let createUserService: CreateUserService    
-
-const generate = () => {
-    return crypto.randomBytes(20).toString('hex')
-}
+let createUserService: CreateUserService
 
 describe('CreateUser', () => {
     beforeEach(() =>{
