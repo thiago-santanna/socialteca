@@ -25,6 +25,29 @@ class UserRepository implements IUserRepository{
         return user
     }
 
+    public async findById(id: string): Promise<User | undefined> {
+        const user = await this.ormRepository.findOne({
+            where: { id }
+        })
+
+        return user
+    }
+
+    public async update(user: User): Promise<User> {
+        return this.ormRepository.save(user)
+    }    
+
+    public async changeStatus(id: string):Promise<User | undefined> {
+        const user = await this.ormRepository.findOne({
+            where: { id }
+        })
+
+        if(!user) return user
+
+        user.status = user.status === 1 ? 0 : 1
+        return this.ormRepository.save(user)        
+    }
+
 }
 
 export default UserRepository

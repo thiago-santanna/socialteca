@@ -33,6 +33,14 @@ class FakeUsersRepository implements IUsersRepository {
         const user = this.users.find(usr => usr.email === email)
         return user
     }
+
+    public async changeStatus(id: string):Promise<User | undefined> {
+        const user = this.users.find(user => user.id === id)
+        if(user){
+            user.status = user.status === 1 ? 0 : 1
+        }
+        return user
+    }
 }
 
 export default FakeUsersRepository
