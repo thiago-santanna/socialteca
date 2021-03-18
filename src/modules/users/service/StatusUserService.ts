@@ -1,7 +1,6 @@
 import {inject, injectable} from 'tsyringe'
 import User from '../infra/typeorm/entities/User';
 import IUsersRepository from "../repositories/IUsersRepository";
-import AppError from '../../../shared/errors/AppError'
 
 @injectable()
 class StatusUserService{
@@ -10,8 +9,9 @@ class StatusUserService{
         private userRepository: IUsersRepository
     ){}
 
-    public async execute({}): Promise<void>{
-
+    public async execute(user: User): Promise<User>{
+        const userUpdated = await this.userRepository.changeStatus(user)
+        return userUpdated
     }
 }
 

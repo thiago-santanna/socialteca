@@ -34,8 +34,7 @@ class FakeUsersRepository implements IUsersRepository {
         return user
     }
 
-    public async changeStatus(id: string):Promise<User | undefined> {
-        const user = this.users.find(user => user.id === id)
+    public async changeStatus(user: User): Promise<User> {
         if(user){
             user.status = user.status === 1 ? 0 : 1
         }

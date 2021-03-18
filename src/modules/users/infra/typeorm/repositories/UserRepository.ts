@@ -37,13 +37,7 @@ class UserRepository implements IUserRepository{
         return this.ormRepository.save(user)
     }    
 
-    public async changeStatus(id: string):Promise<User | undefined> {
-        const user = await this.ormRepository.findOne({
-            where: { id }
-        })
-
-        if(!user) return user
-
+    public async changeStatus(user:User):Promise<User> {
         user.status = user.status === 1 ? 0 : 1
         return this.ormRepository.save(user)        
     }
