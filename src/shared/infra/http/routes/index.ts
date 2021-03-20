@@ -8,6 +8,6 @@ const routes = Router();
 
 routes.use('/users', userRoutes)
 routes.use('/sessions', sessionsRoutes)
-routes.use('/statusUser', statusUserRoutes)
+routes.use('/status', statusUserRoutes)
 
 export default routes;

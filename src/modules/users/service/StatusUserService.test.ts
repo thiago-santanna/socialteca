@@ -21,7 +21,7 @@ describe('StatusUser', () => {
       password: '12345'
     })
     user.status = 1
-    const userUpdated = await statusUserService.execute(user)    
+    const userUpdated = await statusUserService.execute(user.id)    
     expect(userUpdated.status).toBe(0)
   })
 })
