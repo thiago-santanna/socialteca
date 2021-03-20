@@ -3,7 +3,7 @@ import { Router } from 'express'
 import CreateUserController from '../controllers/CreateUserController'
 import UpdateUserController from '../controllers/UpdateUserController'
 
-import ensureAuthenticated from '../middwares/ensureAuthenticated'
+import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated'
 
 const userRoutes = Router()
 

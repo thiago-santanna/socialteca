@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import StatusUserControllers from '../controllers/StatusUserController'
-import ensureAuthenticated from '../middwares/ensureAuthenticated'
+import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated'
 
 const statusRoutes = Router()
 const statusUserControllers = new StatusUserControllers()

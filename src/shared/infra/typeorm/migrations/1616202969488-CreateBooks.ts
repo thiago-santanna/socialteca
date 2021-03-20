@@ -38,11 +38,12 @@ export class CreateBooks1616202969488 implements MigrationInterface {
                         name: 'pages',
                         type: 'integer',
                         default: 0,
+                        isNullable: false
                     },
                     {
                         name: 'synopsis',
                         type: 'varchar',
-                        isNullable: false
+                        isNullable: true
                     },
                     {
                         name: 'status',
