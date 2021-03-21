@@ -49,7 +49,17 @@ export class CreateBooks1616202969488 implements MigrationInterface {
                         name: 'status',
                         type: 'integer',
                         default: 1,
-                    }                    
+                    },
+                    {
+                        name: 'createdAt',
+                        type: 'timestamp',
+                        default: 'now()',
+                      },
+                      {
+                        name: 'updatedAt',
+                        type: 'timestamp',
+                        default: 'now()',
+                      },                     
                 ]
             })
         )
