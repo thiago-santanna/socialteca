@@ -1,4 +1,4 @@
-import Books from '../infra/typeorm/entities/Books'
+import Book from '../infra/typeorm/entities/Book'
 import ICreateBooksDTO from '../dto/ICreateBooksDTO'
 
 type IFindBooks = {
@@ -6,11 +6,11 @@ type IFindBooks = {
     author: string
     isbn: string
 }
-export interface IBooksRepository{
-    findById(id: string): Promise<Books | undefined>
-    findBooks(data:IFindBooks): Promise<Books[] | undefined>
-    create(book: ICreateBooksDTO): Promise<Books>
-    update(book: ICreateBooksDTO): Promise<Books>
+export default interface IBooksRepository{
+    findById(id: string): Promise<Book | undefined>
+    findBooks(data:IFindBooks): Promise<Book[] | undefined>
+    create(book: ICreateBooksDTO): Promise<Book>
+    update(book: ICreateBooksDTO): Promise<Book>
     delete(id: string): Promise<void>
-    changeStatus(book:Books):Promise<Books>
+    changeStatus(book:Book):Promise<Book>
 }

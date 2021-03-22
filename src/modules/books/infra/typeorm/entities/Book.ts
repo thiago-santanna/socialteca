@@ -7,7 +7,7 @@ import {
 } from 'typeorm'
 
 @Entity('books')
-class Books{
+class Book{
     @PrimaryGeneratedColumn('uuid')
     id: string
     @Column()
@@ -38,4 +38,4 @@ class Books{
     updatedAt: Date    
 }
 
-export default Books
+export default Book
