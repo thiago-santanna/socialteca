@@ -10,14 +10,16 @@ class BookRepository implements IBooksRepository{
         this.ormRepository = getRepository(Book)
     }
     public async findById(id: string): Promise<Book | undefined> {
-        throw new Error("Method not implemented.");
+        const book = await this.ormRepository.findOne({ where:{id} })
+        return book
     }
     public async findByName(name: string): Promise<Book | undefined> {
         const book = await this.ormRepository.findOne({ where:{name} })
         return book
     }
     public async findByIsbn(isbn: string): Promise<Book | undefined> {
-        throw new Error('Method not implemented.')
+        const book = await this.ormRepository.findOne({ where:{isbn} })
+        return book
     }    
     public async create(data: ICreateBooksDto): Promise<Book> {
         const book = this.ormRepository.create(data)
@@ -25,15 +27,15 @@ class BookRepository implements IBooksRepository{
         return book
     }
     public async update(data: Book): Promise<Book> {
-        throw new Error("Method not implemented.");
+        return await this.ormRepository.save(data)
     }
-    public async delete(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+    public async delete(data: Book): Promise<void> {
+        await this.ormRepository.delete(data)
     }
     public async changeStatus(data: Book): Promise<Book> {
-        throw new Error("Method not implemented.");
+        data.status = data.status === 1 ? 0 : 1
+        return this.ormRepository.save(data)
     }
-
 }
 
 export default BookRepository

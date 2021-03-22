@@ -6,6 +6,6 @@ export default interface IBooksRepository{
     findByIsbn(isbn: string): Promise<Book | undefined>
     create(data: ICreateBooksDto): Promise<Book>
     update(data: Book): Promise<Book>
-    delete(id: string): Promise<void>
+    delete(data: Book): Promise<void>
     changeStatus(data: Book):Promise<Book>
 }

@@ -31,8 +31,8 @@ class FakeBookRepository implements IBooksRepository{
         this.books[indexBook] = data
         return data
     }
-    public async delete(id: string): Promise<void> {
-        const indexBook = this.books.findIndex(book => book.id === id)
+    public async delete(data: Book): Promise<void> {
+        const indexBook = this.books.findIndex(book => book.id === data.id)
         this.books.splice(indexBook, 1)               
     }
     public async changeStatus(data: Book): Promise<Book> {

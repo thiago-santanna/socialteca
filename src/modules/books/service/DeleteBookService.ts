@@ -16,7 +16,7 @@ class DeleteBookService{
         if(!book){
             throw new AppError('it is not possible to delete a book that does not exist')
         }
-        await this.bookRepository.delete(id)
+        await this.bookRepository.delete(book)
     }
 }
 
