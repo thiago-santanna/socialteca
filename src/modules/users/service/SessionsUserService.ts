@@ -6,7 +6,7 @@ import IUsersRepository from "../repositories/IUsersRepository";
 import AppError from '../../../shared/errors/AppError'
 import authConfig from '../../../config/auth'
 
-interface IRequest{
+type IRequest = {
     email: string;
     password: string;
 }

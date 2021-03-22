@@ -5,7 +5,7 @@ import IHashProvider from '../providers/HashProvider/models/IHashProvider'
 import AppError from '../../../shared/errors/AppError'
 import User from '../infra/typeorm/entities/User'
 
-interface iRequest{
+type iRequest = {
     id: string
     name: string
     phone: string

@@ -6,7 +6,7 @@ import IUsersRepository from '../repositories/IUsersRepository'
 import IUserTokensRepository from '../repositories/IUserTokensRepository'
 import IHashProvider from '../providers/HashProvider/models/IHashProvider'
 
-interface IRequest {
+type IRequest = {
   token: string
   password: string
 }
