@@ -17,6 +17,7 @@ class CreateBookService{
         {name, author, isbn, publication_year, pages, synopsis}: ICreateBooksDto
     ): Promise<Book>{
         const bookAlready = await this.bookRepository.findByName(name);
+        
         if(bookAlready){
             throw new AppError('Book already is saved')
         }

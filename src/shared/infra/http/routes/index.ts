@@ -11,6 +11,6 @@ const routes = Router();
 routes.use('/users', userRoutes)
 routes.use('/sessions', sessionsRoutes)
 routes.use('/status', statusUserRoutes)
-routes.use('books', booksRoutes)
+routes.use('/books', booksRoutes)
 
 export default routes;

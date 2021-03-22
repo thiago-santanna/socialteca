@@ -4,7 +4,7 @@
     "host": "localhost",
     "port": 5432,
     "username": "postgres",
-    "password": "s3gur0@az",
+    "password": "s3gur0@admin",
     "database": "socialteca",
     "entities": [
       "./src/modules/**/infra/typeorm/entities/*.ts"
