@@ -4,9 +4,6 @@ import { inject, injectable } from 'tsyringe'
 import IBooksRepository from '../repositories/IBooksRepository'
 import ICreateBookDTO from '../dto/ICreateBooksDTO'
 import Book from '../infra/typeorm/entities/Book'
-
-import AppError from '../../../shared/errors/AppError'
-
 @injectable()
 class CreateBookService{
     constructor(
@@ -14,7 +11,14 @@ class CreateBookService{
         private bookRepository: IBooksRepository
     ){}
 
-    public async service(data: ICreateBookDTO): Promise<void>{}
+    public async service(
+        {name, author, isbn, publication_year, pages, synopsis}: ICreateBookDTO
+    ): Promise<Book>{
+        const book = await this.bookRepository.create({
+            name, author, isbn, publication_year, pages, synopsis
+        })
+        return book
+    }
 
 }
 

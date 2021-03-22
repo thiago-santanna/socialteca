@@ -9,8 +9,8 @@ type IFindBooks = {
 export default interface IBooksRepository{
     findById(id: string): Promise<Book | undefined>
     findBooks(data:IFindBooks): Promise<Book[] | undefined>
-    create(book: ICreateBooksDTO): Promise<Book>
-    update(book: ICreateBooksDTO): Promise<Book>
+    create(data: ICreateBooksDTO): Promise<Book>
+    update(data: ICreateBooksDTO): Promise<Book>
     delete(id: string): Promise<void>
-    changeStatus(book:Book):Promise<Book>
+    changeStatus(data:Book):Promise<Book>
 }

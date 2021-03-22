@@ -1,6 +1,6 @@
-import ICreateBooksDTO from "modules/books/dto/ICreateBooksDTO";
-import IBooksRepository from "modules/books/repositories/IBooksRepository";
-import Book from "../entities/Book";
+import ICreateBooksDTO from '../../../dto/ICreateBooksDTO'
+import Book from '../../../infra/typeorm/entities/Book'
+import IBooksRepository from '../../../repositories/IBooksRepository'
 
 class BookRepository implements IBooksRepository{
     public async findById(id: string): Promise<Book | undefined> {
@@ -9,16 +9,16 @@ class BookRepository implements IBooksRepository{
     public async findBooks(data: { name: string; author: string; isbn: string; }): Promise<Book[] | undefined> {
         throw new Error("Method not implemented.");
     }
-    public async create(book: ICreateBooksDTO): Promise<Book> {
+    public async create(data: ICreateBooksDTO): Promise<Book> {
         throw new Error("Method not implemented.");
     }
-    public async update(book: ICreateBooksDTO): Promise<Book> {
+    public async update(data: ICreateBooksDTO): Promise<Book> {
         throw new Error("Method not implemented.");
     }
     public async delete(id: string): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    public async changeStatus(book: Book): Promise<Book> {
+    public async changeStatus(data: Book): Promise<Book> {
         throw new Error("Method not implemented.");
     }
 
