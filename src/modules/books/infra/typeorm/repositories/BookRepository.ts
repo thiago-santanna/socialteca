@@ -8,10 +8,10 @@ class BookRepository implements IBooksRepository{
     }
     public async findByName(name: string): Promise<Book | undefined> {
         throw new Error("Method not implemented.");
-    }    
-    public async findBooks(data: IFindBooks): Promise<Book[] | undefined> {
-        throw new Error("Method not implemented.");
     }
+    public async findByIsbn(isbn: string): Promise<Book | undefined> {
+        throw new Error('Method not implemented.')
+    }    
     public async create(data: ICreateBooksDto): Promise<Book> {
         throw new Error("Method not implemented.");
     }

@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import { inject, injectable } from 'tsyringe'
 
 import IBooksRepository from '../repositories/IBooksRepository'
-import ICreateBookDTO from '../dto/ICreateBooksDTO'
+import { ICreateBooksDto } from '../dto/IBooksDTO'
 import Book from '../infra/typeorm/entities/Book'
 import AppError from '../../../shared/errors/AppError'
 
@@ -14,7 +14,7 @@ class CreateBookService{
     ){}
 
     public async service(
-        {name, author, isbn, publication_year, pages, synopsis}: ICreateBookDTO
+        {name, author, isbn, publication_year, pages, synopsis}: ICreateBooksDto
     ): Promise<Book>{
         const bookAlready = await this.bookRepository.findByName(name);
         if(bookAlready){

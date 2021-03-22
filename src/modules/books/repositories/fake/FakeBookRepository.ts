@@ -1,4 +1,4 @@
-import { ICreateBooksDto, IUpdateBooksDto } from '../../dto/IBooksDTO'
+import { ICreateBooksDto, IFindBooks } from '../../dto/IBooksDTO'
 import Book from '../../infra/typeorm/entities/Book'
 import IBooksRepository from '../IBooksRepository'
 
@@ -13,10 +13,11 @@ class FakeBookRepository implements IBooksRepository{
     public async findByName(name: string): Promise<Book | undefined> {
         const book = this.books.find(book => book.name === name)
         return book
-    }    
-    public async findBooks(data: { name: string; author: string; isbn: string; }): Promise<Book[] | undefined> {
-        throw new Error("Method not implemented.");
-    }
+    } 
+    public async findByIsbn(isbn: string): Promise<Book | undefined> {
+        const book = this.books.find(book => book.isbn === isbn)
+        return book
+    }       
     public async create(data: ICreateBooksDto): Promise<Book> {
         const book = new Book()
         Object.assign(book, { id: uuid()}, data)
@@ -31,12 +32,14 @@ class FakeBookRepository implements IBooksRepository{
         return data
     }
     public async delete(id: string): Promise<void> {
-        throw new Error("Method not implemented.");
+        const indexBook = this.books.findIndex(book => book.id === id)
+        this.books.splice(indexBook, 1)               
     }
     public async changeStatus(data: Book): Promise<Book> {
-        throw new Error("Method not implemented.");
-    }
-    
+        const indexBook = this.books.findIndex(book => book.id === data.id)
+        this.books[indexBook].status = this.books[indexBook].status === 1 ? 0 : 1
+        return this.books[indexBook]
+    }    
 }
 
 export default FakeBookRepository
