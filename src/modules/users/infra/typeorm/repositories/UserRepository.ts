@@ -1,5 +1,5 @@
 import { getRepository, Repository } from 'typeorm'
-import ICreateUserDTO from '../../../dto/ICreateUserDTO'
+import { ICreateUserDTO } from '../../../dto/IUserDTO'
 import IUserRepository from '../../../repositories/IUsersRepository'
 import User from '../entities/User'
 

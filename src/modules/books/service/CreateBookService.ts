@@ -4,6 +4,8 @@ import { inject, injectable } from 'tsyringe'
 import IBooksRepository from '../repositories/IBooksRepository'
 import ICreateBookDTO from '../dto/ICreateBooksDTO'
 import Book from '../infra/typeorm/entities/Book'
+import AppError from '../../../shared/errors/AppError'
+
 @injectable()
 class CreateBookService{
     constructor(
@@ -14,6 +16,11 @@ class CreateBookService{
     public async service(
         {name, author, isbn, publication_year, pages, synopsis}: ICreateBookDTO
     ): Promise<Book>{
+        const bookAlready = await this.bookRepository.findByName(name);
+        if(bookAlready){
+            throw new AppError('Book already is saved')
+        }
+
         const book = await this.bookRepository.create({
             name, author, isbn, publication_year, pages, synopsis
         })
