@@ -14,7 +14,7 @@ class ChangeStatusBookService{
 
     public async excute(id: string):Promise<Book>{
         if(!isUuid){
-            throw new AppError('Id not a Uuid valid');
+            throw new AppError('Is not a Uuid valid');
         }
 
         const book = await this.booksRepository.findById(id);

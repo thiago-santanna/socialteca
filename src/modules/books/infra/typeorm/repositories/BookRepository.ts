@@ -30,7 +30,7 @@ class BookRepository implements IBooksRepository{
         return await this.ormRepository.save(data)
     }
     public async delete(data: Book): Promise<void> {
-        await this.ormRepository.delete(data)
+        await this.ormRepository.remove(data)
     }
     public async changeStatus(data: Book): Promise<Book> {
         data.status = data.status === 1 ? 0 : 1
